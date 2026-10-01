@@ -51,8 +51,24 @@ function mostrarContactos() {
             <h3>${contacto.nombre}</h3>
             <p><strong>Teléfono:</strong> ${contacto.telefono}</p>
             <p><strong>Correo:</strong> ${contacto.correo}</p>
+            <button onclick="eliminarContacto(${contacto.id})">
+                Eliminar
+            </button>
         `;
 
     lista.appendChild(tarjeta);
   });
+}
+function eliminarContacto(id) {
+  const confirmar = confirm("¿Está seguro de eliminar este contacto?");
+
+  if (confirmar) {
+    contactos = contactos.filter(function (contacto) {
+      return contacto.id !== id;
+    });
+
+    mostrarContactos();
+
+    alert("Contacto eliminado correctamente.");
+  }
 }
