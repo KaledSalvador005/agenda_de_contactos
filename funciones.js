@@ -51,6 +51,11 @@ function mostrarContactos() {
             <h3>${contacto.nombre}</h3>
             <p><strong>Teléfono:</strong> ${contacto.telefono}</p>
             <p><strong>Correo:</strong> ${contacto.correo}</p>
+
+            <button onclick="verContacto(${contacto.id})">
+                Ver información
+            </button>
+
             <button onclick="eliminarContacto(${contacto.id})">
                 Eliminar
             </button>
@@ -70,5 +75,24 @@ function eliminarContacto(id) {
     mostrarContactos();
 
     alert("Contacto eliminado correctamente.");
+  }
+}
+function verContacto(id) {
+  const contacto = contactos.find(function (contacto) {
+    return contacto.id === id;
+  });
+
+  if (contacto) {
+    alert(
+      "Información del contacto\n\n" +
+        "Nombre: " +
+        contacto.nombre +
+        "\n" +
+        "Teléfono: " +
+        contacto.telefono +
+        "\n" +
+        "Correo: " +
+        contacto.correo,
+    );
   }
 }
