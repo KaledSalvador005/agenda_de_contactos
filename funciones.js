@@ -5,9 +5,14 @@ const formulario = document.getElementById("formContacto");
 formulario.addEventListener("submit", function (evento) {
   evento.preventDefault();
 
-  const nombre = document.getElementById("nombre").value;
-  const telefono = document.getElementById("telefono").value;
-  const correo = document.getElementById("correo").value;
+  const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const correo = document.getElementById("correo").value.trim();
+
+  if (nombre === "" || telefono === "" || correo === "") {
+    alert("Por favor, complete todos los campos.");
+    return;
+  }
 
   const contacto = {
     id: Date.now(),
@@ -17,6 +22,8 @@ formulario.addEventListener("submit", function (evento) {
   };
 
   contactos.push(contacto);
+
+  alert("Contacto agregado correctamente.");
 
   formulario.reset();
 
